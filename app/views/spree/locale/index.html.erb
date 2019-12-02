@@ -1,15 +1,21 @@
 <% if SpreeI18n::Config.available_locales.many? %>
-  <li id="locale-select" data-hook>
-    <%= form_tag spree.set_locale_path, class: 'navbar-form' do %>
-      <div class="form-group">
-        <label for="switch_to_locale" class="sr-only">
-          <%= Spree.t(:'i18n.language') %>
-        </label>
-        <%= select_tag(:switch_to_locale,
-          options_for_select(available_locales_options, I18n.locale),
-          class: 'form-control') %>
-        <noscript><%= submit_tag %></noscript>
-      </div>
-    <% end %>
-  </li>
-<% end %>
+ <div id="locale-select" class="nozari-language nozari-dropdown">
+  <a href="<%=root_path(locale: I18n.locale)%>#" class="active language-toggle" data-nozari="nozari-dropdown">
+    <span>
+      <%= Spree.t(:'i18n.this_file_language', locale: I18n.locale)  %>
+    </span>
+  </a>
+  <ul class="nozari-submenu">
+    <%available_locales_options.each do |f|%>
+    <li class="switcher-option">
+      <%= link_to root_path(locale: f[1]) do%>
+        <span>
+          <%=f[0]%>
+        </span>
+     <%end %>
+    </li>
+    <%end %>
+  </ul>
+</div>
+ <% end %>
+

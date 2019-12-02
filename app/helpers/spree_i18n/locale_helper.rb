@@ -18,6 +18,8 @@ module SpreeI18n
       SpreeI18n::Locale.all.map { |locale| locale_presentation(locale) }.push(['English (EN)', :en])
     end
 
+    
+
     private
 
     def locale_presentation(locale)

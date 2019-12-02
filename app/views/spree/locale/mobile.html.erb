@@ -1,0 +1,34 @@
+ <a href="#">
+    <span class="icon">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </span>
+</a>
+<div class="block-sub">
+    <a href="#" class="close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </a>
+    <div class="block-sub-item">
+        <h5 class="block-item-title">
+          <%= Spree.t(:'i18n.this_file_language', locale: I18n.locale)  %>
+        </h5>
+        <% if SpreeI18n::Config.available_locales.many? %>
+        <div class="currency-form nozari-language"> 
+            <ul class="nozari-language-wrap">
+
+             <% available_locales_options.each do |f|%>
+             <% css = (f[1]==I18n.locale) ? 'active' : ''%>
+              
+                <li class="<%=css%>">
+                  <%= link_to root_path(locale: f[1]) do%>
+                    <span>
+                      <%=f[0]%>
+                    </span>
+                 <%end %>
+                </li>
+                <%end %>
+               
+            </ul>
+        </div>
+        <%end %>
+    </div>
+</div>
